@@ -522,6 +522,8 @@ Open the _Application_ tab in _DevTools_, then expand _Cookies_ in the menu on t
 
 A cookie named `connect.sid` confirms that the session middleware is doing its job.
 
+The connect.sid cookie plays a crucial role in tracking user sessions within web applications. Typically associated with the express-session middleware in Express.js, it functions by generating a unique session ID for each user. This session ID is then stored in the connect.sid cookie, which is sent to the user's browser. In subsequent requests, the server utilizes this cookie to identify and retrieve the corresponding user session data, allowing for seamless session management.
+
 **Congrats, the session middleware is now in place!**
 
 Time for a few questions...
