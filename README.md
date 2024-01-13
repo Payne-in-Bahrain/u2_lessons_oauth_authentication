@@ -41,12 +41,10 @@ This lesson will finalize mongoose-movies!
 
 The starter code for this lesson begins where the Mongoose Queries Lab left off (which also seeded the database with some Movies and performers).
 
-You only have to sync if your code is complete or is not working.
+You only have to sync if your code is incomplete or is not working.
 
-1. Move into the `mongoose-movies` project we started in the Intro to Mongoose lesson:
-    ```
-    cd ~/code/mongoose-movies
-    ```
+1. Move into the `mongoose-movies` we've been working on. 
+
 2. Again, you only have to sync if your code is complete or is not working:
     ```
     git reset --hard origin/sync-15-finish-seeding-query-lab
@@ -101,7 +99,7 @@ Now back to our regularly scheduled programming...
 
 ### Why We Need Authentication
 
-An application's functionality typically revolves around a particular user.
+An application's functionality typically revolves around a particular user.  This is what we refer to as user-centric CRUD.  
 
 For example, when we use online banking, or more importantly, save songs to our Spotify playlists, the application has to know who we are - and this is where **authentication** comes in.
 
@@ -112,8 +110,8 @@ Authentication is what enables an application to know the **identity** of the pe
 In SEI, we're going to learn 3 types of **authentication**:
 
 - **Unit 2**: Logging in via a third-party provider (OAuth)
-- **Unit 3**: Session-based username/password login
-- **Unit 4**: Token-based username/password login
+- **Unit 3**: Token-based username/password login
+- **Unit 4**: Session-based username/password login
 
 ### Authentication vs. Authorization
 
@@ -188,6 +186,8 @@ OAuth is hot, so let's use it!
 ### What is it?
 
 OAuth is an open standard that provides **client applications** access to **resources** of a service such as Google with the permission of the resources' **owner**.
+
+With OAuth, when you connect an application to your Google account, for example, you don't have to share your Google password with that application. Instead, OAuth facilitates the generation of access tokens. These access tokens act as a secure way for the application to interact with your Google account on your behalf. This way, even if the access token is compromised, your actual password remains confidential, adding an extra layer of security to your online interactions.
 
 There are numerous OAuth Providers including:
 
