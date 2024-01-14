@@ -729,6 +729,26 @@ The _verify_ callback will be called by Passport when a user has logged in with 
 
 It's called a _verify_ callback because with most other strategies we would have to verify the credentials, but with OAuth, well, there are no credentials!
 
+<details>
+  <summary>Click for a more detailed explanation</summary>
+
+  When implementing OAuth authentication in a Node.js application using Passport.js, a key concept is the "verify callback." This callback function is invoked by Passport.js after a user successfully logs in with OAuth.
+
+  **Verify Callback**
+
+  The verify callback is a function you define to handle the verification of the user's identity. It is provided to Passport.js when configuring the OAuth strategy. The callback receives the user's profile information obtained from the OAuth provider.
+
+  **Passport and OAuth**
+
+  Passport.js is a middleware that simplifies the authentication process in Node.js. When using OAuth with Passport, traditional username and password verification are not applicable. OAuth relies on tokens exchanged between the application and the OAuth provider.
+
+  **Credentials in OAuth**
+
+  In OAuth, there are no direct username and password inputs from the user. Instead, they log in through a third-party provider (e.g., Google), and the provider confirms their identity by supplying an access token. The "credentials" in OAuth refer to these tokens, managed by the OAuth provider.
+
+  In summary, the verify callback is a crucial part of OAuth integration with Passport.js, handling the verification of user identity based on information provided by the OAuth provider, as there are no traditional credentials in the OAuth authentication process.
+</details>
+
 In this callback we must:
 
 - Fetch the user from the database and provide them back to Passport by calling the `cb()` callback function, or...
