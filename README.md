@@ -976,6 +976,17 @@ router.get('/oauth2callback', passport.authenticate(
 
 Note that we can specify the redirects for a successful and unsuccessful login. For this app, we will redirect to our main `/movies` route in both cases.
 
+<details>
+<summary>Click for a more detailed explanation</summary>
+When a user successfully grants permission on the Google OAuth consent screen, Google will redirect them back to your application, specifically to the /oauth2callback route. It's important to note that the path /oauth2callback is commonly used, but you have the flexibility to choose a different path that aligns with your application's structure and naming conventions.
+
+Passport.js and the Google OAuth strategy will then take care of exchanging the authorization code for user information using the callback function defined in the strategy configuration. Ensure that the callback route specified in your code matches the redirect URI configured in the Google Cloud Console where you set up OAuth credentials. The paths need to be consistent for the authentication flow to work seamlessly.
+
+If the authentication is successful, the user is redirected to the specified success URL (/movies), and if it fails, they are redirected to the failure URL (/movies). The success and failure redirects are customizable based on the application's requirements.
+
+In summary, the callback route, such as /oauth2callback, acts as the endpoint where Google redirects users after granting permission, and Passport.js processes the callback to complete the authentication process. It plays a crucial role in finalizing the OAuth flow, and it's essential that the specified path matches the configuration in the Google Cloud Console for a smooth authentication experience.
+</details>
+
 #### Step 9.4 Logout Route
 
 The last route to add is the route that will logout the user:
