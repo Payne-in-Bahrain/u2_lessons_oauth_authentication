@@ -883,10 +883,14 @@ The callback needs to return what we want passport to assign to the `req.user` o
 Code it below the `passport.serializeUser()` method:
 
 ```js
-// Add to bottom of config/passport.js
-passport.deserializeUser(async function(userId, cb) {
-  // It's nice to be able to use await in-line!
-  cb(null, await User.findById(userId));
+// Add beneath searilizeUser
+passport.deserializeUser(async function(id, cb) {
+  try {
+    const user = await User.findById(id);
+    cb(null, user);
+  } catch (err) {
+    cb(err);
+  }
 });
 ```
 
