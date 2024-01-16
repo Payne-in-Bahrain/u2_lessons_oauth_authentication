@@ -953,6 +953,12 @@ The `passport.authenticate()` method will return a middleware function that does
 
 The user will be presented the consent screen if they haven't previously consented.
 
+**Note:** The code for configuring the Passport strategy and handling the OAuth route serves distinct purposes in user authentication. The configuration code for Passport strategy, with passport.use, passport.serializeUser, and passport.deserializeUser, sets up the strategy for interacting with Google OAuth. It defines how user authentication should be conducted and how user data is serialized for session storage.
+
+On the other hand, the code for the '/auth/google' route is responsible for initiating the Google OAuth process when a user clicks on a "Login with Google" button. This route, defined in the router, utilizes passport.authenticate as middleware to trigger the Google authentication strategy. The middleware specifies which strategy to use ('google') and the permissions requested from the user (scope). When a user accesses this route, they are redirected to Google's OAuth consent screen to grant necessary permissions.
+
+Once granted, Google redirects the user back to your application, and Passport.js takes care of exchanging the authorization code for user information, ultimately storing the user in the session for future requests. The route, therefore, plays a crucial role in the user authentication flow, seamlessly integrating with the Passport.js configuration to handle the complexities of OAuth-based authentication in a web application.
+
 #### Step 9.3 Google Callback Route
 
 Below the login route we just added, let's add the "callback" route that Google will call after the user confirms:
