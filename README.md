@@ -855,11 +855,24 @@ It is the job of that callback function to return the nugget of data that passpo
 ```js
 // Add to bottom of config/passport.js
 passport.serializeUser(function(user, cb) {
-  cb(null, user._id);
+  try {
+    if (!user._id) {
+      throw new Error("User object is missing _id property");
+    }
+    cb(null, user._id);
+  } catch (err) {
+    cb(err);
+  }
 });
 ```
 
 By using the MongoDB `_id` of the user document we can easily retrieve the user doc within the `deserializeUser()` method's callback...
+
+Passport needs to be able to serialize and deserialize users to support persistent login sessions.
+
+Passport uses the user ID to serialize the user object.
+
+The user ID is saved to the session and is later used to retrieve the entire user object via the deserializeUser function.
 
 #### Step 8.7 `deserializeUser()` Method
 
